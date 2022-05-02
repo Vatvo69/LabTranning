@@ -1,7 +1,7 @@
 import re
 import socket
 import argparse
-from PIL import Image
+
 import io
 def revcall(s):
   res_text=b""
@@ -40,17 +40,10 @@ Connection: close
 
 def upload_img(cookie,local_file,domain,data_image,wpnonce):
   file_name=local_file.split("/")
-  extension={
-    "jpg":"jpeg",
-    "png":"png",
-    "gif":"gif"
-  }
-  ext=file_name[-1].split(".")[-1]
-  extension[ext]="jpeg"
-  data=f"""------WebKitFormBoundarykgikusdvkfs4g55y
+  data="""------WebKitFormBoundarykgikusdvkfs4g55y
 Content-Disposition: form-data; name="name"
 
-{file_name[-1]}
+{}
 ------WebKitFormBoundarykgikusdvkfs4g55y
 Content-Disposition: form-data; name="post_id"
 
@@ -58,7 +51,7 @@ Content-Disposition: form-data; name="post_id"
 ------WebKitFormBoundarykgikusdvkfs4g55y
 Content-Disposition: form-data; name="_wpnonce"
 
-{wpnonce.decode()}
+{}
 ------WebKitFormBoundarykgikusdvkfs4g55y
 Content-Disposition: form-data; name="type"
 
@@ -72,22 +65,23 @@ Content-Disposition: form-data; name="short"
 
 1
 ------WebKitFormBoundarykgikusdvkfs4g55y
-Content-Disposition: form-data; name="async-upload"; filename="{file_name[-1]}"
-Content-Type: image/{extension[ext]}
+Content-Disposition: form-data; name="async-upload"; filename="{}"
+Content-Type: image/jpeg
 
-%s
-------WebKitFormBoundarykgikusdvkfs4g55y--
-""".replace("\n","\r\n") % (data_image.decode('ISO-8859-1'))
-  data=data.encode('ISO-8859-1')
-  header=f"""POST /wp-admin/async-upload.php HTTP/1.1
-Content-Length: {str(len(data))}
-Host: {domain}
-Cookie: {cookie.decode()}
+""".format(file_name[-1],wpnonce.decode(),file_name[-1])
+  new=data.encode()
+  new=new.replace(b"\n",b"\r\n")
+  new+=data_image+b"\r\n------WebKitFormBoundarykgikusdvkfs4g55y--\r\n"
+  
+  header="""POST /wp-admin/async-upload.php HTTP/1.1
+Content-Length: {}
+Host: {}
+Cookie: {}
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundarykgikusdvkfs4g55y
 Connection: close
 
-"""
-  header=header.encode().replace(b"\n",b"\r\n")+data
+""".format(str(len(new)),domain,cookie.decode()).encode().replace(b"\n",b"\r\n")
+  header+=new
   with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
     s.connect((domain,80))
     s.sendall(header)
