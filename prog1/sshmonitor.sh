@@ -1,7 +1,5 @@
 #!/bin/bash
 
-touch old.txt new.txt email.txt
-
 who > new.txt
 while read -r line;
 do

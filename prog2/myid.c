@@ -28,7 +28,9 @@ int main(){
   printf("Thu muc home: %s\n",pwd->pw_dir);
   printf("Cac group cua user: ");
   for(int i=0;i<groupId;i++){
-    printf("%s ",getgrgid(groups[i])->gr_name);
+    printf("%d", groups[i]);
+    struct group *gr = getgrgid(groups[i]);
+    if (gr != NULL) printf("(%s) ", gr->gr_name);
   }
   printf("\n");
 }
