@@ -33,13 +33,16 @@
 <body>
   <?php include "views/header.php" ?>
   <div class="container">
-    <div class="row">
+    <?php if($_SESSION['teacher']) 
+      echo '<div class="row">
       <div class="col-md-2">
         <form action="create.php">
           <button class="btn btn-secondary" type="submit">Add User</button>
         </form>
       </div>
-    </div>
+    </div>';
+    ?>
+    
     <div class="row" style="margin-top: 20px;">
       <div class="col-sm-12">
         <div class="table-responsive">

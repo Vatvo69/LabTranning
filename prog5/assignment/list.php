@@ -16,13 +16,16 @@ include 'class.php'; ?>
 <body>
   <?php include 'header.php' ?>
   <div class="container">
-    <div class="row">
-      <div class="col-md-2">
-        <form action="add.php">
-          <button class="btn btn-secondary" type="submit">Add Assignment</button>
-        </form>
-      </div>
+    <?php if($_SESSION['teacher']) 
+    echo '<div class="row">
+    <div class="col-md-2">
+      <form action="add.php">
+        <button class="btn btn-secondary" type="submit">Add Assignment</button>
+      </form>
     </div>
+  </div>'
+    ?>
+    
     <div class="row" style="margin-top: 20px;">
       <h3>List Assignment</h3>
       <div class="col-sm-12">
