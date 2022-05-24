@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassRoom;
+use App\Models\Submit;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 
@@ -48,7 +49,8 @@ class ClassRoomController extends Controller
 
     public function detailExercise(Request $request,$id){
         $e=ClassRoom::find($id);
-        return view('classroom.detail',['exercise'=>$e]);
+        $submit=Submit::where('exerciseId',$id)->get();
+        return view('classroom.detail',['exercise'=>$e,'submit'=>$submit]);
     }
 
     public function download(Request $request,$id){

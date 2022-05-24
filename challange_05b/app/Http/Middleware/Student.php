@@ -17,7 +17,7 @@ class Student
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->role!=0){
-            return redirect()->route('index');
+            return redirect()->back();
         }
         return $next($request);
     }

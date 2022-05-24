@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ClassRoomController;
+use App\Http\Controllers\SubmitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +62,12 @@ Route::middleware(['checklogin'])->group(function () {
         Route::post('/user/editUser/{id}',[UserController::class,'updateUser'])->name('updateUser');
 
         Route::get('/user/deleteUser/{id}',[UserController::class,'deleteUser'])->name('deleteUser');
+
+        Route::get('/exercise/list',[SubmitController::class,'listSubmit'])->name('listSubmit');
+
+        Route::get('/submit/delete/{id}',[SubmitController::class,'deleteSubmit'])->name('deleteSubmit');
+
+        Route::get('/submit/detail/{id}',[SubmitController::class,'detailSubmit'])->name('detailSubmit');
     });
     Route::get('/classroom/download/{id}',[ClassRoomController::class,'download'])->name('download');
     
@@ -74,6 +81,8 @@ Route::middleware(['checklogin'])->group(function () {
 
     Route::get('/classroom/detail/{id}',[ClassRoomController::class,'detailExercise'])->name('detailExercise');
 
-
+    Route::middleware(['isStudent'])->group(function () {
+        Route::post('/exercise/submit/{id}',[SubmitController::class,'saveSubmit'])->name('saveSubmit');
+    });
 });
 
