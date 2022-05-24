@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ClassRoomController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +46,10 @@ Route::middleware(['checklogin'])->group(function () {
     Route::get('/user/list',[UserController::class,'listUser'])->name('listUser');
 
     Route::get('/user/detail/{id}',[UserController::class,'detailUser'])->name('detailUser');
+    
+    Route::get('/user/sendChat/{id}',[ChatController::class,'sendChat'])->name('sendChat');
+
+    Route::post('/user/sendChat/{id}',[ChatController::class,'insertChat']);
 
     Route::middleware(['isTeacher'])->group(function () {
         Route::get('/user/add',[UserController::class,'addUser'])->name('addUser');
@@ -57,9 +62,18 @@ Route::middleware(['checklogin'])->group(function () {
 
         Route::get('/user/deleteUser/{id}',[UserController::class,'deleteUser'])->name('deleteUser');
     });
+    Route::get('/classroom/download/{id}',[ClassRoomController::class,'download'])->name('download');
+    
+    Route::get('/classroom/list',[ClassRoomController::class,'listExercise'])->name('exerciseList');
 
-    Route::get('/user/sendChat/{id}',[ChatController::class,'sendChat'])->name('sendChat');
+    Route::get('/classroom/add',[ClassRoomController::class,'addExercise'])->name('addExercise');
 
-    Route::post('/user/sendChat/{id}',[ChatController::class,'insertChat']);
+    Route::post('/classroom/add',[ClassRoomController::class,'saveExercise']);
+
+    Route::get('/classroom/deleteExercise/{id}',[ClassRoomController::class,'deleteExercise'])->name('deleteExercise');
+
+    Route::get('/classroom/detail/{id}',[ClassRoomController::class,'detailExercise'])->name('detailExercise');
+
+
 });
 

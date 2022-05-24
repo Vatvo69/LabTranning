@@ -1,7 +1,8 @@
 @extends('template.layout',['title'=>'Add User'])
 @section('content')
 <div class="container">
-  <h3>Add User</h3>
+    <br>
+  <h3><center>Add User</center></h3>
   @if (session('error'))
       <div class="alert alert-danger">{{ session('error') }}</div>
   @endif 
