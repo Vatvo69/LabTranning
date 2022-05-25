@@ -6,7 +6,7 @@
         <ul>
           <li><a href="{{route('listUser')}}">View UserInfo</a></li>
           <li><a href="{{ route('exerciseList') }}">View ClassRoom</a></li>
-          <li><a href="#">View Game</a></li>
+          <li><a href="{{ route('gameList') }}">View Game</a></li>
         </ul>
       </div>
     </div>

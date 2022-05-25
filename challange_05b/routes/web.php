@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\SubmitController;
+use App\Http\Controllers\GameController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -84,5 +85,16 @@ Route::middleware(['checklogin'])->group(function () {
     Route::middleware(['isStudent'])->group(function () {
         Route::post('/exercise/submit/{id}',[SubmitController::class,'saveSubmit'])->name('saveSubmit');
     });
+    Route::get('/game/list',[GameController::class,'gameList'])->name('gameList');
+
+    Route::get('/game/add',[GameController::class,'addGame'])->name('addGame');
+
+    Route::post('/game/add',[GameController::class,'saveGame']);
+
+    Route::get('/game/delete/{id}',[GameController::class,'deleteGame'])->name('deleteGame');
+
+    Route::get('/game/detail/{id}',[GameController::class,'detailGame'])->name('detailGame');
+
+    Route::post('/game/answer/{id}',[GameController::class,'answerGame'])->name('answerGame');
 });
 

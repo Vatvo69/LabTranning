@@ -17,42 +17,43 @@
   @if (session('deleteSuccess'))
       <div class="alert alert-success">{{ session('deleteSuccess') }}</div>
   @endif
-  <div class="row" style="margin-top: 20px;">
-    <div class="col-sm-12">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Full Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($user as $u)
-                <tr>
-                  <td>{{$u->username}}</td>
-                  <td>{{$u->fullname}}</td>
-                  <td>{{$u->email}}</td>
-                  <td>{{$u->phone}}</td>
-                  <td>{{$u->role}}</td>
-                  <td>
-                    <a href="{{ route('sendChat',['id'=>$u->id]) }}"class="btn btn-info" style="float: left;margin-right: 8px;">Chat</a>
-                    <a href="{{route('detailUser',['id'=>$u->id])}}" class="btn btn-info" style="float: left;margin-right: 8px;">Detail</a>
-                    @if (Auth::user()->role==1)
-                    <a href="{{route('editUser',['id'=>$u->id])}}" class="btn btn-info" style="float: left;margin-right: 8px;">Edit</a>
-                    <a href="{{route('deleteUser',['id'=>$u->id])}}" class="btn btn-info" style="float: left;margin-right: 8px" onclick="return confirm('Delete this account?')" style="color: white;float: right;">Delete</a>
-                    @endif
-                  </td>
-                </tr>
-            @endforeach
-          </tbody>
-        </table>
+    <h3><center><b>List User</b></center></h3>
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($user as $u)
+                  <tr>
+                    <td>{{$u->username}}</td>
+                    <td>{{$u->fullname}}</td>
+                    <td>{{$u->email}}</td>
+                    <td>{{$u->phone}}</td>
+                    <td>{{$u->role}}</td>
+                    <td>
+                      <a href="{{ route('sendChat',['id'=>$u->id]) }}"class="btn btn-info" style="float: right;margin-left: 16px;">Chat</a>
+                      <a href="{{route('detailUser',['id'=>$u->id])}}" class="btn btn-info" style="float: right;margin-left: 16px;">Detail</a>
+                      @if (Auth::user()->role==1)
+                        <a href="{{route('editUser',['id'=>$u->id])}}" class="btn btn-info" style="float: right;margin-left: 16px;">Edit</a>
+                        <a href="{{route('deleteUser',['id'=>$u->id])}}" class="btn btn-info" style="float: right;" onclick="return confirm('Delete this account?')" style="color: white;float: right;">Delete</a>
+                      @endif
+                    </td>
+                  </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 </div>
 
 @endsection

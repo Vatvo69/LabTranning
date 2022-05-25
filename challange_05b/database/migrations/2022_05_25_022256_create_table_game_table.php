@@ -13,17 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('submits', function (Blueprint $table) {
+        Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('studentId');
-            $table->foreignId('exerciseId');
-            $table->string('studentName');
+            $table->foreignId('teacherId');
             $table->string('title');
+            $table->string('hint');
             $table->string('file');
             $table->timestamps();
 
-            $table->foreign('studentId')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('exerciseId')->references('id')->on('class_rooms')->onDelete('cascade');
+            $table->foreign('teacherId')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('submits');
+        Schema::dropIfExists('games');
     }
 };

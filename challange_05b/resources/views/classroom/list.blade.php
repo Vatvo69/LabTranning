@@ -17,6 +17,7 @@
   @if (session('deleteSuccess'))
       <div class="alert alert-success">Delete Exercies Success!</div>
   @endif
+  <h3><center><b>List Exercise</b></center></h3>
   <div class="row" style="margin-top: 20px;">
     <div class="col-sm-12">
       <div class="table-responsive">
