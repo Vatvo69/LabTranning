@@ -21,7 +21,13 @@ use App\Http\Controllers\GameController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('get_upload/{path}/{filename}',function($path,$filename){
+    $path=storage_path('app/public/'.$path.'/'.$filename);
+    if(file_exists($path)){
+        return response()->file($path);
+    }
+    abort(404);
+});
 Route::get('login',[LoginController::class,'login'])->name('login');
 
 Route::post('login',[LoginController::class,'postLogin'])->name('postLogin');

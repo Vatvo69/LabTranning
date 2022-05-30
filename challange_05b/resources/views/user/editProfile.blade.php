@@ -1,7 +1,7 @@
 @extends('template.layout',['title'=>'Edit Profile'])
 @section('content')
     <div class="container">
-      <h3>Edit Profile</h3>
+      <h3><center>Edit Profile</center></h3>
       @if (session('error'))
           <div class="alert alert-danger">
             {{session('error')}}

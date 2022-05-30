@@ -25,7 +25,8 @@ class ClassRoomController extends Controller
             $name_file = time().'_'.$name;
             $allow=['txt','pdf','docx'];
             if(in_array($ext,$allow)){
-                $file->move('classroom/teacher',$name_file);
+                // $file->move('classroom/teacher',$name_file);
+                $file->storeAs('public/classroom/teacher',$name_file);
                 $exercise=new ClassRoom();
                 $exercise->teacherId=Auth::user()->id;
                 $exercise->title=$request->title;
@@ -55,10 +56,12 @@ class ClassRoomController extends Controller
 
     public function download(Request $request,$id){
         $e=ClassRoom::find($id);
-        $path_download='classroom/teacher/'.$e->file;
-       
-        if(Storage::exists($path_download)){
-            return Storage::download($path_download);
+        // $path_download='storage/classroom/teacher/'.$e->file;
+        $path_download=storage_path('app/public/classroom/teacher/'.$e->file);
+
+        if(file_exists($path_download)){
+            // return Storage::download($e->file);
+            return response()->download($path_download);
         }
         return redirect()->back()->with('error',true);
     }

@@ -16,7 +16,8 @@ class SubmitController extends Controller
             $file_name=time().'_'.$name;
             $allow=['pdf', 'txt', 'docx'];
             if(in_array($ext,$allow)){
-                $file->move('classroom/student',$file_name);
+                // $file->move('classroom/student',$file_name);
+                $file->storeAs('public/classroom/student',$file_name);
                 $submit=new Submit();
                 $submit-> title=$request->title;
                 $submit-> studentId=Auth::user()->id;

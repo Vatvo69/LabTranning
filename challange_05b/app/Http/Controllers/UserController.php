@@ -31,7 +31,8 @@ class UserController extends Controller
             $name_file=time().'_'.$name;
             $allow=['jpg','png','jpeg'];
             if(in_array($ext,$allow)){
-                $file->move('image',$name_file);
+                // $file->move('image',$name_file);
+                $file->storeAs('public/avatar',$name_file);
             }
             
             $user=User::find(Auth::user()->id);
@@ -84,7 +85,8 @@ class UserController extends Controller
             $name_file = time().'_'.$name;
             $allow=['jpg','png','jpeg'];
             if(in_array($ext,$allow)){
-                $file->move('image',$name_file);
+                // $file->move('image',$name_file);
+                $file->storeAs('public/avatar',$name_file);
             }
             $user=new User();
             $user->username=$request->username;
@@ -118,7 +120,8 @@ class UserController extends Controller
             $name_file=time().'_'.$name;
             $allow=['jpg','png','jpeg'];
             if(in_array($ext,$allow)){
-                $file->move('image',$name_file);
+                // $file->move('image',$name_file);
+                $file->storeAs('public/avatar',$name_file);
             }
             
             $user=User::find($id);

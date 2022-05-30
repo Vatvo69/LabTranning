@@ -7,7 +7,7 @@
       @endif
       <div class="container">
         <div class="text-center">
-          <img src="../../image/{{ $user->imagePath }}" class="img-fluid rounded-circle" style="width: 150px;height: 150px;" alt="Avatar">
+          <img src="{{ asset('storage/avatar/'.$user->imagePath) }}" class="img-fluid rounded-circle" style="width: 150px;height: 150px;" alt="Avatar">
         </div>
         <div class="form-group">
           <label for="username">Username</label>
