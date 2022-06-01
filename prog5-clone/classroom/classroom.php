@@ -4,10 +4,12 @@
         private $id;
         private $title;
         private $date;
-        public function __construct($id,$title,$date)
+        private $file;
+        public function __construct($id,$title,$file,$date)
         {
             $this->id=$id;
             $this->title=$title;
+            $this->file=$file;
             $this->date=$date;
         }
 
@@ -20,7 +22,9 @@
         public function getDate(){
             return $this->date;
         }
-
+        public function getFile(){
+            return $this->file;
+        }
         public static function getAll(){
             $conn=Database::connection();
             $query="SELECT * from class";
@@ -28,7 +32,7 @@
             $rows=array();
             if(mysqli_num_rows($res)>0){
                 while($row=mysqli_fetch_object($res)){
-                    $class=new ClassRoom($row->id,$row->title,$row->date);
+                    $class=new ClassRoom($row->id,$row->title,$row->file,$row->date);
                     $rows[]=$class;
                 }
             }

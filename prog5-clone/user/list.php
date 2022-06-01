@@ -9,6 +9,7 @@ if (isset($_POST['deleteBtn'])) {
     $stmt->bind_param("s", $id);
     $res = $stmt->execute();
     if ($res) {
+        unlink('avatar/'.$_POST['file']);
         $mess = "<h4 style='color: green;'>Delete User Success!</h4>";
     } else {
         $mess = "<h4 style='color: red;'>Delete User Failed!</h4>";
@@ -75,7 +76,7 @@ if (isset($_POST['deleteBtn'])) {
                             echo "<form action='profile.php' style='float: right;margin-right: 8px;' method='post'>
                                              <button type='submit' class='btn btn-primary' value='{$user->getUsername()}' name='editBtn'>Edit</button>
                                            </form>";
-                            echo "<form action='#' style='float: right;margin-right: 8px;' method='post'><button type='submit' class='btn btn-primary' value='{$user->getId()}' name='deleteBtn' onclick=\"return confirm('Delete User {$user->getUsername()}')\" name='deleteBtn'>Delete</button></form>";
+                            echo "<form action='#' style='float: right;margin-right: 8px;' method='post'><input type='hidden' name='file' value='{$user->getAvatar()}'><button type='submit' class='btn btn-primary' value='{$user->getId()}' name='deleteBtn' onclick=\"return confirm('Delete User {$user->getUsername()}')\">Delete</button></form>";
                         } ?>
                         <?php
                         echo "</td>";

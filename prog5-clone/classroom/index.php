@@ -11,6 +11,9 @@
         $stmt->bind_param("s",$id);
         $res=$stmt->execute();
         if($res){
+            if(file_exists('uploads/teacher/'.$_POST['file'])){
+                unlink('uploads/teacher/'.$_POST['file']);
+            }
             $mess = "<h4 style='color: green;'>Delete Exercise Success!</h4>";
         }
         else{
@@ -62,7 +65,7 @@
                                 echo "<td>";
                                 echo "<a href='detail.php?id={$e->getId()}' class='btn btn-primary' style='float: right;margin-left: 8px;'>Detail</a>";
                                 if($_SESSION['teacher']){
-                                    echo "<form action='#' method='post'><button type='submit' class='btn btn-primary' name='deleteBtn' value='{$e->getId()}' style='float: right;margin-right: 8px;' onclick=\"return confirm('Delete {$e->getTitle()}')\">Delete</button></form>";
+                                    echo "<form action='' method='post'><input type='hidden' name='file' value='{$e->getFile()}'><button type='submit' class='btn btn-primary' name='deleteBtn' value='{$e->getId()}' style='float: right;margin-right: 8px;' onclick=\"return confirm('Delete {$e->getTitle()}')\">Delete</button></form>";
                                 }
                                 echo "</td>";
                                 echo "</tr>";

@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="list.php">View User Info</a></li>
                 <li><a href="../classroom/index.php">View ClassRoom</a></li>
-                <li><a href="#">View Game</a></li>
+                <li><a href="../game/index.php">View Game</a></li>
             </ul>
         </div>
     </div>

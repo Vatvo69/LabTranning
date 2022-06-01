@@ -40,7 +40,19 @@
             $mess="<h5 style='color: red;'>Upload only file TXT</h5>";
         }
     }
-    elseif (isset($_POST['delete']))
+    elseif (isset($_POST['delete'])){
+        $id=$_POST['delete'];
+        $query="DELETE FROM submit where id=?";
+        $stmt=$conn->prepare($query);
+        $stmt->bind_param("s",$id);
+        $res=$stmt->execute();
+        if($res){
+            $mess = "<h4 style='color: green;'>Delete Submit Success!</h4>";
+        }
+        else{
+            $mess = "<h4 style='color: red;'>Delete Submit Failed!</h4>";
+        }
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -137,7 +149,7 @@
                                 echo "<td>
                                             <a href=\"detailSubmit.php?id={$r->getId()}\" class=\"btn btn-primary\" style='float: right;margin-right: 8px'>Detail</a>
                                             <form action=\"\" method=\"post\">
-                                                <button type=\"submit\" class='btn btn-primary' style='float: right;margin-right: 8px' onclick=\"return confirm('Delete Submit ?')\">Delete</button>
+                                                <button type=\"submit\" class='btn btn-primary' style='float: right;margin-right: 8px' onclick=\"return confirm('Delete Submit ?')\" name='delete' value='{$r->getId()}'>Delete</button>
                                             </form>
                                       </td>";
                                 echo "</tr>";
@@ -148,6 +160,9 @@
                 </table>
             </div>
             <?php
+            if(isset($mess)){
+                echo $mess;
+            }
         }
         ?>
 

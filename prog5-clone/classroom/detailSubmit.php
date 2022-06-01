@@ -44,6 +44,7 @@
                 <label for="">Content</label>
                 <?php echo "<textarea cols=\"30\" rows=\"5\" readonly class=\"form-control\">{$content}</textarea>"; ?>
             </div>
+            <a href="index.php" class="btn btn-primary">Back To List</a>
         </div>
 
     </div>
