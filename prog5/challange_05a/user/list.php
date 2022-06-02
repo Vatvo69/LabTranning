@@ -9,7 +9,10 @@ if (isset($_POST['deleteBtn'])) {
     $stmt->bind_param("s", $id);
     $res = $stmt->execute();
     if ($res) {
-        unlink('avatar/'.$_POST['file']);
+        if(file_exists('avatar/'.$_POST['file'])){
+            unlink('avatar/'.$_POST['file']);
+        }
+        
         $mess = "<h4 style='color: green;'>Delete User Success!</h4>";
     } else {
         $mess = "<h4 style='color: red;'>Delete User Failed!</h4>";
