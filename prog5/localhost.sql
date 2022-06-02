@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `id18932519_pro5a_vinhld`
 --
-CREATE DATABASE IF NOT EXISTS `db_user` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `db_user`;
+CREATE DATABASE IF NOT EXISTS `challenge5a_vinhld` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `challenge5a_vinhld`;
 
 -- --------------------------------------------------------
 

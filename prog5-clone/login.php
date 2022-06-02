@@ -10,6 +10,7 @@
             $_SESSION['teacher']=$teacher;
             $_SESSION['student']=$student;
             $_SESSION['user']=$username;
+            $_SESSION['id']=$perm->getId();
             header("Location: index.php");
             die();
         }

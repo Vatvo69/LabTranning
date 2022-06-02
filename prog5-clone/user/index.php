@@ -16,7 +16,7 @@
             <h3><?php echo "Hello "?><b><?php echo $_SESSION['user']?></b></h3>
             <ul>
                 <li><a href="list.php">View User Info</a></li>
-                <li><a href="#">View CLassRoom</a></li>
+                <li><a href="../classroom/index.php">View ClassRoom</a></li>
                 <li><a href="#">View Game</a></li>
             </ul>
         </div>
