@@ -27,7 +27,7 @@ if (isset($_POST['btnCreate']) && isset($_FILES["avatar"]["name"])) {
     $user = new User($username,$password,$fullname,$email,$phone,0,basename($image));
 
     if ($user->save()) {
-        $mess = "<h4 style='color: green;'>Add User Success!</h4><p><a href='index.php'>Back To List</a></p>";
+        $mess = "<h4 style='color: green;'>Add User Success!</h4><p><a href='list.php'>Back To List</a></p>";
     } else {
         $mess = '<h4 style="color: red;">Add User False!</h4>';
     }

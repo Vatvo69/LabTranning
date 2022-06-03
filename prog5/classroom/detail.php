@@ -147,9 +147,9 @@
                                 echo "<td>{$r->getTitle()}</td>";
                                 echo "<td>{$r->getDate()}</td>";
                                 echo "<td>
-                                            <a href=\"detailSubmit.php?id={$r->getId()}\" class=\"btn btn-primary\" style='float: right;margin-right: 8px'>Detail</a>
-                                            <form action=\"\" method=\"post\">
-                                                <button type=\"submit\" class='btn btn-primary' style='float: right;margin-right: 8px' onclick=\"return confirm('Delete Submit ?')\" name='delete' value='{$r->getId()}'>Delete</button>
+                                            <a href=\"detailSubmit.php?id={$r->getId()}\" class='btn btn-primary' style='float: right;margin-right: 8px'>Detail</a>
+                                            <form action='' method='post'>
+                                                <button type='submit' class='btn btn-primary' style='float: right;margin-right: 8px' onclick=\"return confirm('Delete Submit ?')\" name='delete' value='{$r->getId()}'>Delete</button>
                                             </form>
                                       </td>";
                                 echo "</tr>";

@@ -40,8 +40,6 @@ CREATE TABLE `class` (
 -- Dumping data for table `class`
 --
 
-INSERT INTO `class` (`id`, `idTeacher`, `title`, `content`, `file`, `date`) VALUES
-(6, 1, 'Bai1', 'test', '1654099292_flag.docx', '2022-06-01 23:01:32');
 
 -- --------------------------------------------------------
 
@@ -62,8 +60,6 @@ CREATE TABLE `game` (
 -- Dumping data for table `game`
 --
 
-INSERT INTO `game` (`id`, `idTeacher`, `title`, `hint`, `file`, `date`) VALUES
-(6, 1, 'Game1', 'hint', 'solve.txt', '2022-06-01 23:44:52');
 
 -- --------------------------------------------------------
 
@@ -83,13 +79,6 @@ CREATE TABLE `message` (
 --
 -- Dumping data for table `message`
 --
-
-INSERT INTO `message` (`id`, `sendId`, `recvId`, `content`, `author`, `date`) VALUES
-(1, 1, 3, 'Toi la teacher1', 'teacher1', '2022-06-03 16:46:31'),
-(2, 3, 1, 'Toi la student1', 'student1', '2022-06-03 16:47:08'),
-(6, 1, 3, 'Test', 'teacher1', '2022-06-03 17:18:35'),
-(15, 1, 3, 'hello', 'teacher1', '2022-06-03 17:22:27'),
-(16, 3, 1, 'Hi', 'student1', '2022-06-03 17:22:43');
 
 -- --------------------------------------------------------
 
@@ -111,8 +100,6 @@ CREATE TABLE `submit` (
 -- Dumping data for table `submit`
 --
 
-INSERT INTO `submit` (`id`, `title`, `idStudent`, `idExercise`, `studentName`, `file`, `date`) VALUES
-(2, 'Giai Bai 1', '3', '1', 'student1', '1654093916_solve.txt', '2022-06-01 21:31:56');
 
 -- --------------------------------------------------------
 
