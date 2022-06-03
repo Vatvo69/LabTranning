@@ -1,6 +1,6 @@
 <?php
 require_once '../config/connect.php';
-class Mess{
+class Message{
     private $id;
     private $sendId;
     private $recvId;
@@ -13,6 +13,7 @@ class Mess{
         $this->recvId=$recvId;
         $this->content=$content;
         $this->author=$author;
+
     }
     public function getId(){
         return $this->id;
@@ -28,5 +29,8 @@ class Mess{
     }
     public function getAuthor(){
         return $this->author;
+    }
+    public function getDate(){
+        return $this->date;
     }
 }

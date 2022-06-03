@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Jun 01, 2022 at 06:48 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Host: 127.0.0.1
+-- Generation Time: Jun 03, 2022 at 12:26 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -75,19 +75,21 @@ CREATE TABLE `message` (
   `id` int(11) NOT NULL,
   `sendId` int(11) DEFAULT NULL,
   `recvId` int(11) DEFAULT NULL,
-  `content` varchar(1000) DEFAULT NULL,
-  `author` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `content` varchar(100) DEFAULT NULL,
+  `author` varchar(100) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`id`, `sendId`, `recvId`, `content`, `author`) VALUES
-(11, 1, 4, 'Hello', NULL),
-(24, 2, 1, 'Xin Chao toi la teacher2', 'teacher2'),
-(25, 1, 1, 'Xin chao toi la teacher1', 'teacher1'),
-(27, 3, 1, 'Xin Chao toi la student1', 'student1');
+INSERT INTO `message` (`id`, `sendId`, `recvId`, `content`, `author`, `date`) VALUES
+(1, 1, 3, 'Toi la teacher1', 'teacher1', '2022-06-03 16:46:31'),
+(2, 3, 1, 'Toi la student1', 'student1', '2022-06-03 16:47:08'),
+(6, 1, 3, 'Test', 'teacher1', '2022-06-03 17:18:35'),
+(15, 1, 3, 'hello', 'teacher1', '2022-06-03 17:22:27'),
+(16, 3, 1, 'Hi', 'student1', '2022-06-03 17:22:43');
 
 -- --------------------------------------------------------
 
@@ -134,7 +136,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `fullname`, `email`, `phone`, `role`, `avatar`) VALUES
-(1, 'teacher1', '123456a@A', 'Le Van A', 'a@teacher1.com', '0123456789', 1, '1652238384-anh.png'),
+(1, 'teacher1', '123456a@A', 'Le Van A', 'a@teacher1.com', '0123456789', 1, '1654242083-download.jpg'),
 (2, 'teacher2', '123456a@A', 'Le Van B', 'a@a.com', '123456789', 1, '1652236823-anh.png'),
 (3, 'student1', '123456a@A', 'Le Van C', 'a@a.com', '123456789', 0, NULL),
 (4, 'student2', '123456a@A', 'Le Van D', 'a@student2.com', '123456789', 0, '');
@@ -193,7 +195,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `submit`
@@ -205,7 +207,7 @@ ALTER TABLE `submit`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
